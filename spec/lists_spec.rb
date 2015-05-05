@@ -30,6 +30,16 @@ describe(List) do
     end
   end
 
+  describe("#delete") do
+    it('lets you delete a list') do
+      list = List.new({:name => "Epicodus stuff", :id => nil})
+      list.save()
+      expect(List.all()).to(eq([list]))
+      list.delete()
+      expect(List.all()).to(eq([]))
+    end
+  end
+
   describe("#==") do
     it("is the same list if it has the same name") do
       list1 = List.new({:name => "Epicodus stuff", :id => nil})

@@ -1,5 +1,5 @@
 class Task
-  attr_reader(:description, :list_id)
+  attr_reader(:description, :list_id, :id)
 
   define_method(:initialize) do |attributes|
     @description = attributes.fetch(:description)
@@ -15,6 +15,11 @@ class Task
       tasks.push(Task.new({:description => description, :list_id => list_id}))
     end
     tasks
+  end
+
+  define_method(:delete) do
+    id = self.id()
+    DB.exec("DELETE FROM tasks WHERE id = #{id};")
   end
 
 

@@ -49,6 +49,15 @@ describe(Task) do
   end
 end
 
+describe("#delete") do
+  it('lets you delete a list') do
+    task = Task.new({:description => "stuff", :list_id => 2})
+    task.save()
+    expect(Task.all()).to(eq([task]))
+    task.delete()
+    expect(Task.all()).to(eq([]))
+  end
+end
 
 
 
